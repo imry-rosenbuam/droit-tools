@@ -24,7 +24,8 @@ maturity_buckets = {
     "BondFutureOrForward": {'DEFAULT': ['3m', '6m', '1y', '2y']},
     "FixedFloatSingleCurrency": {'DEFAULT': ['1m', '3m', '6m', '1y', '2y', '3y']},
     "InflationSingleCurrency": {'DEFAULT': ['1m', '3m', '6m', '1y', '2y', '3y']},
-    "OISSingleCurrency": {'DEFAULT': ['1m', '3m', '6m', '1y', '2y', '3y']}
+    "OISSingleCurrency": {'DEFAULT': ['1m', '3m', '6m', '1y', '2y', '3y']},
+    "BondOption": {'DEFAULT': ['3m', '6m', '1y', '2y']}
 }
 
 terms = {
@@ -70,7 +71,7 @@ def tenor_bucket_parser(tenor_code: str, sub_asset: str, extra: str = None) -> l
         tenor_max = None
         tenor_min = None
 
-        if sub_asset is 'FixedFloatSingleCurrency':
+        if sub_asset == 'FixedFloatSingleCurrency':
             xx = 1
         if bucket <= len(bucket_list):
             tenor_max = bucket_list[bucket - 1]

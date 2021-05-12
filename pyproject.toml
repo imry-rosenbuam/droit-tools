@@ -7,8 +7,8 @@ authors = ["imry <imry.rosnebaum@droitfintech.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 xlrd = "^1.2.0"
-numpy = "^1.19.0"
-pandas = "^1.0.5"
+numpy = "^1.20.3"
+pandas = "^1.2.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

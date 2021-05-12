@@ -7,7 +7,7 @@ import droit_tools.ref_data_csv_file_structure as file_structure
 import droit_tools.ref_data_config as rd_config
 import droit_tools.ref_data_tenor_util as tenor_util
 
-default_result_file_name = "20200710_nyar_liquid_results.xlsx"
+default_result_file_name = "20210430_nyar_liquid_results.xlsx"
 default_file_name = 'template_nyar.xlsx'
 file_name = sys.argv.pop() if len(sys.argv) > 1 else default_result_file_name
 path = os.path.join(os.environ['DROIT_REFDATA'], file_name)
