@@ -55,6 +55,8 @@ def tenor_parser(tenor: str) -> int:
 # increase in a year per bucket
 def tenor_bucket_parser(tenor_code: str, sub_asset: str, extra: str = None) -> list:
     try:
+        if tenor_code == None:
+            return None
         bucket_dict: Dict[str, List[str]] = maturity_buckets.get(sub_asset)
 
         # get the list of Tenors from the dictionary

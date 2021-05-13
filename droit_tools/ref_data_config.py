@@ -82,3 +82,10 @@ swap_codes = {
     'IFSC': "InflationSingleCurrency",
     'OSSC': "OISSingleCurrency"
 }
+
+bond_term_code = {
+'ST':	'ShortTerm',
+'MT':	'MediumTerm',
+'LT':	'LongTerm',
+'ULT':	'UltraLongTerm'
+}

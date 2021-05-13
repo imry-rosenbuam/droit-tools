@@ -30,8 +30,10 @@ def populate_header(data_map, file_to_update, file_metadata: dict) -> None:
     inputs = file_metadata['inputs']
     for item in inputs:
         column = file_structure.column_taxonomy.get(item)
+        if item.find('@') >-1:
+            xxx=1
         column_name = item.split('@')[0]
-        if column['type'] == 'TENOR':  # tenor has a different behaviour and as such we are making a hack to accommodate
+        if column['type'] == 'TENOR' and column_name == 'residualTerm':  # tenor has a different behaviour and as such we are making a hack to accommodate
             update_header_columns(column['module'], column_name, column['type'], 'GT', 'INPUT', sources,
                                   types, operators, modes)
             # add the second column
@@ -39,7 +41,8 @@ def populate_header(data_map, file_to_update, file_metadata: dict) -> None:
                                   types, operators, modes)
 
         else:
-            update_header_columns(column['module'], item, column['type'], 'EQ', 'INPUT', sources,
+            column_name = item.split('@')[0]
+            update_header_columns(column['module'], column_name, column['type'], 'EQ', 'INPUT', sources,
                                   types, operators, modes)
 
     outputs = file_metadata['outputs']
@@ -60,7 +63,7 @@ def add_input_to_row(item: str, row: list, row_dict: dict, asset_tuple: tuple) -
     mandatory = taxonomy.get('mandatory', False)
     default = None if mandatory else taxonomy['default']
 
-    if taxonomy.get('type') == 'TENOR':
+    if taxonomy.get('type') == 'TENOR' and item.find('residualTerm') > -1:
         tenor_buck = row_dict.get(taxonomy['code'])
         extra_info = row_dict.get('SP')
         buckets = tenor_util.tenor_bucket_parser(tenor_buck, asset_tuple.get('SubAsset'), extra=extra_info)
@@ -92,7 +95,11 @@ def add_input_to_row(item: str, row: list, row_dict: dict, asset_tuple: tuple) -
         val = row_dict.get(taxonomy["code"], default)
         if mandatory:
             x = 1
+        if item.find('underlyingBondTerm') > -1 and val != 'NA':
+            val = rd_config.bond_term_code[val].upper()
+
         if taxonomy.get('type') == 'BOOLEAN':
+
             if val in ['T']:
                 val = 'true'
             else:

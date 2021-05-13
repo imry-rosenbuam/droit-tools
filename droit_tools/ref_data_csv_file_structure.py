@@ -271,8 +271,8 @@ column_taxonomy = {
         "module": "interest_rate_seg_criteria",
         "type": "STRING",
         "default": 'NA',
-        'code': 'UIC',
-        'extra': ['LIST']
+        'code': 'UIC'
+        #,'extra': ['LIST']
     },
     "underlierIsin@eq_derivative": {
         "module": "trade",
@@ -296,7 +296,7 @@ column_taxonomy = {
     },
     "underlyingIRTerm": {
         "module": "interest_rate_seg_criteria",
-        "type": "STRING",
+        "type": "TENOR",
         "default": None,
         'code': 'IRTC'
     },
