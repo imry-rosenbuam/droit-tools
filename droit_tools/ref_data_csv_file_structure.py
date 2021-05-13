@@ -97,25 +97,25 @@ column_taxonomy = {
     },
     "preTradeSSTI": {
         "module": "output",
-        "type": "INTEGER",
+        "type": "DECIMAL",
         "default": 0,
         'code': "SSTI pre-trade"
     },
     "postTradeSSTI": {
         "module": "output",
-        "type": "INTEGER",
+        "type": "DECIMAL",
         "default": 0,
         'code': "SSTI post-trade"
     },
     "preTradeLIS": {
         "module": "output",
-        "type": "INTEGER",
+        "type": "DECIMAL",
         "default": 0,
         'code': "LIS pre-trade"
     },
     "postTradeLIS": {
         "module": "output",
-        "type": "INTEGER",
+        "type": "DECIMAL",
         "default": 0,
         'code': "LIS post-trade"
     },
